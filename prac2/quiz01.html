@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Quiz 01</title>
+  </head>
+  <body>
+    <div id="app">
+      <todo-footer></todo-footer>
+    </div>
+
+    <div id="app2">
+      {{message}}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+      Vue.component('todo-footer',{
+        template:'<p>This is another global child component</p>'
+      });
+
+        var app = new Vue({
+          el: '#app2',
+          data:{
+            message:'This is a parent component'
+          },
+        });
+
+        new Vue({
+          el:'#app'
+        });
+
+        new Vue({
+          el: '#app2',
+          components:{
+            'todo-footer':app
+          }
+        });
+
+    </script>
+  </body>
+</html>
